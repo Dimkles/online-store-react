@@ -1,1 +1,22 @@
-.menu {}
+.menu {
+    font-size: 20px;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__link {
+        color: rgb(22, 22, 22);
+        transition: all .25s;
+
+        &:hover {
+            color: rgb(255, 196, 3);
+        }
+
+        &.active {
+            color: rgb(255, 196, 3);
+        }
+    }
+}
