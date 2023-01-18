@@ -1,4 +1,4 @@
-import { createApi } from "@reduxjs/toolkit/dist/query"
+import { createApi } from '@reduxjs/toolkit/query/react'
 import { IProduct } from "../../models/Product"
 import { baseQueryWithReauth } from "./service"
 
@@ -17,5 +17,5 @@ export const productAPI = createApi({
     }),
 })
 
-export const { } = productAPI
+export const { useFechAllProductsQuery } = productAPI
 
