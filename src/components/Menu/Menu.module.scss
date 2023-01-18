@@ -8,15 +8,15 @@
     }
 
     &__link {
-        color: rgb(22, 22, 22);
+        color: #000;
         transition: all .25s;
 
         &:hover {
-            color: rgb(255, 196, 3);
+            color: #00C90D
         }
 
         &.active {
-            color: rgb(255, 196, 3);
+            color: #00C90D;
         }
     }
 }

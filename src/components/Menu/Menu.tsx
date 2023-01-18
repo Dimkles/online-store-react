@@ -10,7 +10,7 @@ const Menu = () => {
     const [activeLink, setActiveLink] = useState('/')
     const routes = [
         { name: 'Главная', to: '/' },
-        { name: 'Товара', to: '/catalog' }
+        { name: 'Каталог', to: '/catalog' }
     ]
     return (
         <nav className={classes.menu}>
