@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Container from '../../components/Container/Container';
+import MyInput from '../../components/UI/MyInput/MyInput';
 
 const Home = () => {
+    const [value, setValue] = useState('')
     return (
-        <div>
-            Home
-        </div>
+        <Container>
+            <div>
+                <MyInput onChange={setValue} placeholder='введите email' name='email' type='email' />
+            </div>
+        </Container>
+
     );
 };
 

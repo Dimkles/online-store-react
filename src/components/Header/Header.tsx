@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../Container/Container';
-import Menu from '../Menu/Menu';
+import Menu from '../UI/Menu/Menu';
 import classes from './Header.module.scss'
 const Header = () => {
     return (

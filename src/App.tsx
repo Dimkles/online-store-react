@@ -7,7 +7,6 @@ const App = () => {
     <div className={classes.app}>
       <Header />
       <AppRouter />
-      work
     </div>
   );
 };
