@@ -1,7 +1,7 @@
 import { BaseQueryFn, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react'
-
 import { Mutex } from 'async-mutex'
-const BACKEND_URL = process.env.BACKEND_URL
+import { BACKEND_URL } from '../../consts/store';
+require('dotenv').config();
 
 export function isCustomError(
     error: unknown
