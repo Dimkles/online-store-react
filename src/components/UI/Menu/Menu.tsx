@@ -5,7 +5,6 @@ const Menu = () => {
     const location = useLocation();
     useEffect(() => {
         setActiveLink(location.pathname)
-        console.log(location.pathname)
     }, [location])
     const [activeLink, setActiveLink] = useState('/')
     const routes = [
