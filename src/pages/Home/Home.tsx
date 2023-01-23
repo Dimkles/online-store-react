@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <Container>
             <div>
-                <MyInput onChange={setValue} placeholder='введите email' name='email' type='email' />
+                <MyInput value={value} setValue={setValue} placeholder='введите email' name='email' type='email' />
             </div>
         </Container>
 
