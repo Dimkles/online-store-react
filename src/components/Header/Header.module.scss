@@ -1,12 +1,8 @@
-.header {
-    height: 80px;
+.header {}
+
+.content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    &__container {
-        height: 300px;
-        background: #000;
-    }
-
+    height: 80px;
 }
