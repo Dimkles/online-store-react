@@ -38,6 +38,7 @@ const AuthForm: FC<AuthFormProps> = ({ onSubmit }) => {
                 localStorage.setItem('token', token)
                 onSubmit()
             } catch (error) {
+                console.log(error)
                 if ((isCustomError(error))) {
                     setError(error.data.message)
                 }
