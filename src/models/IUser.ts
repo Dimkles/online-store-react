@@ -7,6 +7,8 @@ export interface IRoles {
 
 export interface IUser {
     email: string
+    name: string
+    address: string
     id: number
     roles: IRoles[]
     banned: boolean,

@@ -20,7 +20,7 @@ const AuthWidget = () => {
         isAuth
             ?
             <div className={classes.content}>
-                <div>{user.email}</div>
+                <div>{user.name}</div>
                 <MyButton onClick={logoutHandler} type='button'>Выйти</MyButton>
             </div>
             :
