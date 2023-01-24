@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 import { useLogoutMutation } from '../../services/RTK/UserService';
-import LoginForm from '../loginForm/LoginForm';
+import AuthForm from '../authForm/AuthForm';
 import MyModal from '../MyModal/MyModal';
 import MyButton from '../UI/MyButton/MyButton';
 import classes from './AuthWidget.module.scss'
@@ -27,7 +27,7 @@ const AuthWidget = () => {
             <div className={classes.content}>
                 <MyButton onClick={() => setModalActive(true)} type='button'>Войти</MyButton>
                 <MyModal active={modalActive} setActive={setModalActive}>
-                    <LoginForm onSubmit={hideModal} />
+                    <AuthForm onSubmit={hideModal} />
                 </MyModal>
             </div>
 

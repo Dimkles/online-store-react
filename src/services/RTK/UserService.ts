@@ -5,6 +5,12 @@ interface loginBody {
     email: string,
     password: string
 }
+interface registrationBody {
+    email: string
+    password: string
+    name: string
+    address: string
+}
 export const userAPI = createApi({
     reducerPath: 'userAPI',
     baseQuery: baseQueryWithReauth,
@@ -16,7 +22,7 @@ export const userAPI = createApi({
                 body,
             }),
         }),
-        registration: build.mutation<UserState, loginBody>({
+        registration: build.mutation<UserState, registrationBody>({
             query: (body) => ({
                 url: '/auth/registration',
                 method: 'POST',
