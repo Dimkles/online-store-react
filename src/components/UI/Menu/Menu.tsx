@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks/redux';
 import classes from './Menu.module.scss'
-const Menu = () => {
+const Menu: FC = () => {
     const { isAuth, user } = useAppSelector(state => state.user)
     const location = useLocation();
     useEffect(() => {

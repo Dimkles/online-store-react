@@ -1,5 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
-import { IProduct } from "../../models/Product"
+import { IProduct } from "../../models/IProduct"
 import { baseQueryWithReauth } from "./service"
 
 export const productAPI = createApi({
