@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthWidget from '../authWidget/AuthWidget';
-import Container from '../Container/Container';
+import Container from '../UI/Container/Container';
 import Menu from '../UI/Menu/Menu';
 import classes from './Header.module.scss'
 const Header = () => {

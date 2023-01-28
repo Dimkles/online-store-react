@@ -3,5 +3,18 @@
     box-shadow: 0px 5px 10px 3px rgba(28, 47, 62, 0.2);
     padding: 12px 17px;
     border-radius: 7px;
-    background-color: #00C90D;
+
+    &.contained {
+        background-color: #00C90D;
+    }
+
+    &.outlined {
+        border: 1px solid #00C90D;
+        background: transparent;
+    }
+
+    &.text {
+        background: transparent;
+        box-shadow: none
+    }
 }

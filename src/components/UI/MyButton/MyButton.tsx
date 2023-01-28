@@ -4,15 +4,13 @@ interface MyButtonProps {
     children: ReactNode
     type: 'button' | 'submit'
     onClick?: any
-    mt?: number
-    mb?: number
+    variant?: 'text' | 'contained' | 'outlined'
 }
-const MyButton: FC<MyButtonProps> = ({ children, type, onClick, mt = 0, mb = 0 }) => {
+const MyButton: FC<MyButtonProps> = ({ children, type, onClick, variant = 'contained' }) => {
     return (
         <button
-            style={{ marginTop: mt, marginBottom: mb }}
             onClick={onClick}
-            className={classes.button}
+            className={[classes.button, classes[variant]].join(' ')}
             type={type}
         >
             {children}

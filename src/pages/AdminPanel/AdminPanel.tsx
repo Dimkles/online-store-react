@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '../../components/Container/Container';
+import Container from '../../components/UI/Container/Container';
 import classes from './AdminPanel.module.scss'
 const AdminPanel = () => {
     return (

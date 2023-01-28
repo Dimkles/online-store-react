@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 import { useLogoutMutation } from '../../services/RTK/UserService';
 import LoginForm from '../LoginForm/LoginForm';
-import MyModal from '../MyModal/MyModal';
+import MyModal from '../UI/MyModal/MyModal';
 import Box from '../UI/Box/Box';
 import MyButton from '../UI/MyButton/MyButton';
 import classes from './AuthWidget.module.scss'
@@ -37,7 +37,7 @@ const AuthWidget = () => {
                             ? <LoginForm submitHandler={hideModal} />
                             : <LoginForm submitHandler={hideModal} />
                         }
-                        <MyButton type='button' onClick={() => setIsRegistration(prev => !prev)}>{isRegistration ? 'Вход' : 'Регистрация'}</MyButton>
+                        <MyButton variant='text' type='button' onClick={() => setIsRegistration(prev => !prev)}>{isRegistration ? 'Вход' : 'Регистрация'}</MyButton>
                     </Box>
                 </MyModal>
             </div>
