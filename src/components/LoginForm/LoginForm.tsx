@@ -2,13 +2,15 @@ import { Form, Formik } from 'formik';
 import React, { FC, useState } from 'react';
 import * as Yup from 'yup';
 import { isCustomError } from '../../services/RTK/service';
-import { useLoginMutation, useRegistrationMutation } from '../../services/RTK/UserService';
+import { useLoginMutation } from '../../services/RTK/UserService';
+import Box from '../UI/Box/Box';
 import MyButton from '../UI/MyButton/MyButton';
+import MyError from '../UI/MyError/MyError';
 import MyTextInput from '../UI/MyTextInput/MyTextInput';
 
 
 interface LoginFormProps {
-    submitHandler: () => void
+    submitHandler?: () => void
 }
 
 
@@ -29,11 +31,11 @@ const LoginForm: FC<LoginFormProps> = ({ submitHandler }) => {
                     .required('Поле обязательно'),
             })}
             onSubmit={async (values, { setSubmitting }) => {
-                setError('')
+
                 try {
                     const { token } = await login(values).unwrap()
                     localStorage.setItem('token', token)
-                    submitHandler()
+                    if (submitHandler) submitHandler()
                     setSubmitting(false);
                 } catch (e) {
                     if (isCustomError(e)) {
@@ -41,25 +43,29 @@ const LoginForm: FC<LoginFormProps> = ({ submitHandler }) => {
                     }
                 }
             }}
-
         >
-            <Form>
-                <MyTextInput
-                    label="Email"
-                    name="email"
-                    id='email'
-                    type="email"
-                    placeholder="dimkless@mail.ru"
-                />
-                <MyTextInput
-                    label="Пароль"
-                    name="password"
-                    id='password'
-                    type="password"
-                    placeholder="********"
-                />
-                <MyButton type='submit'>Войти</MyButton>
-                {error && <span>{error}</span>}
+            <Form onChange={() => setError('')}>
+                <Box
+                    gap={15}
+                    fd='column'
+                >
+                    <MyTextInput
+                        label="Email"
+                        name="email"
+                        id='email'
+                        type="email"
+                        placeholder="dimkless@mail.ru"
+                    />
+                    <MyTextInput
+                        label="Пароль"
+                        name="password"
+                        id='password'
+                        type="password"
+                        placeholder="********"
+                    />
+                    <MyButton type='submit'>Войти</MyButton>
+                    {error && <MyError>{error}</MyError>}
+                </Box>
             </Form>
         </Formik>
     );

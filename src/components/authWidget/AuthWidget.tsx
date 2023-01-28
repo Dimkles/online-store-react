@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
-import { useLoginMutation, useLogoutMutation, useRegistrationMutation } from '../../services/RTK/UserService';
+import { useLogoutMutation } from '../../services/RTK/UserService';
 import LoginForm from '../LoginForm/LoginForm';
 import MyModal from '../MyModal/MyModal';
+import Box from '../UI/Box/Box';
 import MyButton from '../UI/MyButton/MyButton';
 import classes from './AuthWidget.module.scss'
 const AuthWidget = () => {
@@ -28,10 +29,16 @@ const AuthWidget = () => {
             <div className={classes.content}>
                 <MyButton onClick={() => setModalActive(true)} type='button'>Войти</MyButton>
                 <MyModal active={modalActive} setActive={setModalActive}>
-                    {isRegistration
-                        ? <LoginForm submitHandler={hideModal} />
-                        : <LoginForm submitHandler={hideModal} />
-                    }
+                    <Box
+                        gap={15}
+                        fd='column'
+                    >
+                        {isRegistration
+                            ? <LoginForm submitHandler={hideModal} />
+                            : <LoginForm submitHandler={hideModal} />
+                        }
+                        <MyButton type='button' onClick={() => setIsRegistration(prev => !prev)}>{isRegistration ? 'Вход' : 'Регистрация'}</MyButton>
+                    </Box>
                 </MyModal>
             </div>
 
