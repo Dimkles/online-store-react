@@ -1,13 +1,15 @@
+import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import Container from '../../components/Container/Container';
 import MyInput from '../../components/UI/MyInput/MyInput';
-
+import MyTextInput from '../../components/UI/MyTextInput/MyTextInput';
+import * as Yup from 'yup';
 const Home = () => {
-    const [value, setValue] = useState('')
     return (
         <Container>
             <div>
-                <MyInput value={value} setValue={setValue} placeholder='введите email' name='email' type='email' />
+                home
+
             </div>
         </Container>
 

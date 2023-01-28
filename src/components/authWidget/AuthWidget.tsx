@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
-import { useLogoutMutation } from '../../services/RTK/UserService';
-import AuthForm from '../authForm/AuthForm';
+import { useLoginMutation, useLogoutMutation, useRegistrationMutation } from '../../services/RTK/UserService';
+import LoginForm from '../LoginForm/LoginForm';
 import MyModal from '../MyModal/MyModal';
 import MyButton from '../UI/MyButton/MyButton';
 import classes from './AuthWidget.module.scss'
 const AuthWidget = () => {
     const { isAuth, user } = useAppSelector(state => state.user)
+    const [isRegistration, setIsRegistration] = useState(false)
     const [modalActive, setModalActive] = useState(false)
     const [logout] = useLogoutMutation()
     const logoutHandler = async () => {
@@ -27,7 +28,10 @@ const AuthWidget = () => {
             <div className={classes.content}>
                 <MyButton onClick={() => setModalActive(true)} type='button'>Войти</MyButton>
                 <MyModal active={modalActive} setActive={setModalActive}>
-                    <AuthForm onSubmit={hideModal} />
+                    {isRegistration
+                        ? <LoginForm submitHandler={hideModal} />
+                        : <LoginForm submitHandler={hideModal} />
+                    }
                 </MyModal>
             </div>
 
