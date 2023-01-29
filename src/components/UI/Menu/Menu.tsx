@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks/redux';
 import classes from './Menu.module.scss'
+import MenuItem from './menuItem/MenuItem';
 const Menu: FC = () => {
     const [menuACtive, setMenuActive] = useState(false)
     const { isAuth, user } = useAppSelector(state => state.user)
@@ -41,37 +42,13 @@ const Menu: FC = () => {
                 {isAuth
                     ? user.roles.some(e => e.value === 'ADMIN')
                         ? adminRoutes.map((route) =>
-                            <li className={classes.menu__item} key={route.name}>
-                                <Link
-                                    className={activeLink === route.to
-                                        ? [classes.menu__link, classes.active].join(' ')
-                                        : classes.menu__link}
-                                    to={route.to}
-                                >
-                                    {route.name}</Link>
-                            </li>
+                            <MenuItem activeLink={activeLink} route={route} key={route.name} />
                         )
                         : authRoutes.map((route) =>
-                            <li className={classes.menu__item} key={route.name}>
-                                <Link
-                                    className={activeLink === route.to
-                                        ? [classes.menu__link, classes.active].join(' ')
-                                        : classes.menu__link}
-                                    to={route.to}
-                                >
-                                    {route.name}</Link>
-                            </li>
+                            <MenuItem activeLink={activeLink} route={route} key={route.name} />
                         )
                     : publicRoutes.map((route) =>
-                        <li className={classes.menu__item} key={route.name}>
-                            <Link
-                                className={activeLink === route.to
-                                    ? [classes.menu__link, classes.active].join(' ')
-                                    : classes.menu__link}
-                                to={route.to}
-                            >
-                                {route.name}</Link>
-                        </li>
+                        <MenuItem activeLink={activeLink} route={route} key={route.name} />
                     )
                 }
             </ul>

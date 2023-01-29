@@ -1,0 +1,12 @@
+.link {
+    color: #000;
+    transition: all .25s;
+
+    &:hover {
+        color: #00C90D
+    }
+
+    &.active {
+        color: #00C90D;
+    }
+}
