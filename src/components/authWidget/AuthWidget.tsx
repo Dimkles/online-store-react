@@ -6,6 +6,7 @@ import MyModal from '../UI/MyModal/MyModal';
 import Box from '../UI/Box/Box';
 import MyButton from '../UI/MyButton/MyButton';
 import classes from './AuthWidget.module.scss'
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 const AuthWidget = () => {
     const { isAuth, user } = useAppSelector(state => state.user)
     const [isRegistration, setIsRegistration] = useState(false)
@@ -34,7 +35,7 @@ const AuthWidget = () => {
                         fd='column'
                     >
                         {isRegistration
-                            ? <LoginForm submitHandler={hideModal} />
+                            ? <RegistrationForm submitHandler={hideModal} />
                             : <LoginForm submitHandler={hideModal} />
                         }
                         <MyButton variant='text' type='button' onClick={() => setIsRegistration(prev => !prev)}>{isRegistration ? 'Вход' : 'Регистрация'}</MyButton>
