@@ -1,10 +1,13 @@
 import React from 'react';
+import Container from '../../components/UI/Container/Container';
 
 const Catalog = () => {
     return (
-        <div>
-            Catalog
-        </div>
+        <section>
+            <Container>
+
+            </Container>
+        </section>
     );
 };
 
