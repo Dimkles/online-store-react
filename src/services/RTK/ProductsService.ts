@@ -14,8 +14,16 @@ export const productAPI = createApi({
             }),
             providesTags: resul => ['Product'],
         }),
+        createProduct: build.mutation<IProduct, FormData>({
+            query: (body) => ({
+                url: '/products',
+                method: 'POST',
+                body
+            }),
+            invalidatesTags: ['Product']
+        })
     }),
 })
 
-export const { useFechAllProductsQuery } = productAPI
+export const { useFechAllProductsQuery, useCreateProductMutation } = productAPI
 

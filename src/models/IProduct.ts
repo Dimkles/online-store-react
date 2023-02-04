@@ -7,6 +7,6 @@ export interface IProduct {
     price: number
     quantity: number
     imagejpg: string
-    imagewebp: string
+    imagewebp?: string
     categories: ICategory[]
 }

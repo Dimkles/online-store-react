@@ -9,17 +9,21 @@ interface BoxProps {
     jc?: 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'start'
     ai?: 'center' | 'flex-start' | 'flex-end'
     fd?: 'column' | 'row'
+    fw?: 'wrap' | 'nowrap'
+    padding?: string
 
 }
 
-const Box: FC<BoxProps> = ({ gap = 10, jc = 'start', ai = 'flex-start', fd = 'row', children }) => {
+const Box: FC<BoxProps> = ({ gap = 10, jc = 'start', ai = 'flex-start', fd = 'row', fw = 'nowrap', children, padding = '0' }) => {
     return (
         <div
             style={{
                 justifyContent: jc,
                 alignItems: ai,
                 flexDirection: fd,
-                gap: gap
+                gap: gap,
+                flexWrap: fw,
+                padding: padding
             }}
 
             className={classes.box}>

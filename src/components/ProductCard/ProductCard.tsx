@@ -1,18 +1,38 @@
 import React, { FC } from 'react';
-import classes from 'ProductCard.module.scss'
-import Box from '../UI/Box/Box';
+import classes from './ProductCard.module.scss'
 import { IProduct } from '../../models/IProduct';
+import MyImage from '../UI/MyImage/MyImage';
+import MyButton from '../UI/MyButton/MyButton';
 
+interface ProductCardProps {
+    product: IProduct
+}
 
-
-const ProductCard: FC<IProduct> = ({ categories, description, imagejpg, imagewebp, name, price, quantity }) => {
+const ProductCard: FC<ProductCardProps> = ({ product }) => {
     return (
         <div className={classes.card}>
-            <Box>
+            <MyImage jpg={product.imagejpg} height={300} />
+            <div className={classes.info}>
                 <span className={classes.name}>
-                    {name}
+                    {product.name}
                 </span>
-            </Box>
+                <p className={classes.description}>
+                    {product.description}
+                </p>
+                <div className={classes.price}>
+                    {product.price}
+                </div>
+                <div className={classes.categories}>
+                    {product.categories.map(category =>
+                        <span className={classes.category}>
+                            {category.name}
+                        </span>
+                    )}
+                </div>
+            </div>
+            <MyButton type='button'>
+                Добавить в корзину
+            </MyButton>
         </div>
     );
 };
