@@ -5,12 +5,16 @@ interface FechAllProducts {
     limit: number
     page: number
 }
+export interface RessFechAllProducts {
+    products: IProduct[]
+    totalItems: number
+}
 export const productAPI = createApi({
     reducerPath: 'productAPI',
     baseQuery: baseQueryWithReauth,
     tagTypes: ['Product'],
     endpoints: (build) => ({
-        fechAllProducts: build.query<IProduct[], FechAllProducts>({
+        fechAllProducts: build.query<RessFechAllProducts, FechAllProducts>({
             query: ({ limit, page }) => ({
                 url: '/products',
                 method: 'GET',

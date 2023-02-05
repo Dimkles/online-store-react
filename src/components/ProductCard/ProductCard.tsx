@@ -3,6 +3,7 @@ import classes from './ProductCard.module.scss'
 import { IProduct } from '../../models/IProduct';
 import MyImage from '../UI/MyImage/MyImage';
 import MyButton from '../UI/MyButton/MyButton';
+import { BACKEND_URL } from '../../consts/store';
 
 interface ProductCardProps {
     product: IProduct
@@ -11,7 +12,7 @@ interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
     return (
         <div className={classes.card}>
-            <MyImage jpg={product.imagejpg} height={300} />
+            <MyImage webp={`${BACKEND_URL}/${product.imagewebp}`} jpg={`${BACKEND_URL}/${product.imagejpg}`} height={300} />
             <div className={classes.info}>
                 <span className={classes.name}>
                     {product.name}
@@ -24,7 +25,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
                 </div>
                 <div className={classes.categories}>
                     {product.categories.map(category =>
-                        <span className={classes.category}>
+                        <span key={category.id} className={classes.category}>
                             {category.name}
                         </span>
                     )}
