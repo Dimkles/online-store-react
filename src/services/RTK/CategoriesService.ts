@@ -1,7 +1,9 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { ICategory } from '../../models/ICategory'
 import { baseQueryWithReauth } from "./service"
-
+interface CreateCategory {
+    name: string
+}
 export const categoryAPI = createApi({
     reducerPath: 'categoryAPI',
     baseQuery: baseQueryWithReauth,
@@ -14,7 +16,7 @@ export const categoryAPI = createApi({
             }),
             providesTags: resul => ['Category'],
         }),
-        createCategory: build.mutation<ICategory, FormData>({
+        createCategory: build.mutation<ICategory, CreateCategory>({
             query: (body) => ({
                 url: '/categories',
                 method: 'POST',

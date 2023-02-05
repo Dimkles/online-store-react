@@ -5,7 +5,6 @@ import Box from '../../../../components/UI/Box/Box';
 import MyTextInput from '../../../../components/UI/MyTextInput/MyTextInput';
 import MyButton from '../../../../components/UI/MyButton/MyButton';
 import MyError from '../../../../components/UI/MyError/MyError';
-import { ICategory } from '../../../../models/ICategory';
 import MySelect from '../../../../components/UI/MySelect/MySelect';
 import MyFileInput from '../../../../components/UI/MyFileInput/MyFileInput';
 import { useCreateProductMutation } from '../../../../services/RTK/ProductsService';
@@ -17,8 +16,8 @@ const CreateProductForm = () => {
             initialValues={{
                 name: 'asdasdasda',
                 description: 'asdasdasdasd',
-                price: '',
-                quantity: '',
+                price: '2',
+                quantity: '2',
                 image: {} as File,
                 categories: [1, 2]
 
@@ -49,12 +48,26 @@ const CreateProductForm = () => {
                         type="text"
                         placeholder="Драцена"
                     />
+                    <MyTextInput
+                        label="Название"
+                        name="price"
+                        id='price'
+                        type="text"
+                        placeholder="Драцена"
+                    />
+                    <MyTextInput
+                        label="Название"
+                        name="quantity"
+                        id='quantity'
+                        type="text"
+                        placeholder="Драцена"
+                    />
                     <MySelect multiple={true} id='1' label="Job Type" name="categories">
                         <option value="">Select a job type</option>
-                        <option value="designer">Designer</option>
-                        <option value="development">Developer</option>
-                        <option value="product">Product Manager</option>
-                        <option value="other">Other</option>
+                        <option value="1">Designer</option>
+                        <option value="2">Developer</option>
+                        <option value="3">Product Manager</option>
+                        <option value="4">Other</option>
                     </MySelect>
                     <MyFileInput
                         label="Название"
