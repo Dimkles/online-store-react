@@ -11,7 +11,7 @@ export const categoryAPI = createApi({
     endpoints: (build) => ({
         fechAllCategories: build.query<ICategory[], any>({
             query: () => ({
-                url: '/products',
+                url: '/categories',
                 method: 'GET'
             }),
             providesTags: resul => ['Category'],

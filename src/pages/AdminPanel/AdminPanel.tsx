@@ -9,6 +9,7 @@ const AdminPanel = () => {
             <Container>
                 Admin Panel
                 <CreateCategoryForm />
+                <CreateProductForm />
             </Container>
         </section>
     );

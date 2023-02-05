@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import Box from '../../../../components/UI/Box/Box';
@@ -7,10 +7,16 @@ import MyButton from '../../../../components/UI/MyButton/MyButton';
 import MyError from '../../../../components/UI/MyError/MyError';
 import MySelect from '../../../../components/UI/MySelect/MySelect';
 import MyFileInput from '../../../../components/UI/MyFileInput/MyFileInput';
-import { useCreateProductMutation } from '../../../../services/RTK/ProductsService';
+import { useCreateProductMutation, useFechAllProductsQuery } from '../../../../services/RTK/ProductsService';
+import { useFechAllCategoriesQuery } from '../../../../services/RTK/CategoriesService';
 const CreateProductForm = () => {
     const [createProduct] = useCreateProductMutation()
+    const { data: categories } = useFechAllCategoriesQuery('')
+    const { data: products } = useFechAllProductsQuery({ limit: 10, page: 1 })
     const [error, setError] = useState('')
+    useEffect(() => {
+        console.log(products)
+    }, [products])
     return (
         <Formik
             initialValues={{
@@ -62,12 +68,12 @@ const CreateProductForm = () => {
                         type="text"
                         placeholder="Драцена"
                     />
-                    <MySelect multiple={true} id='1' label="Job Type" name="categories">
-                        <option value="">Select a job type</option>
-                        <option value="1">Designer</option>
-                        <option value="2">Developer</option>
-                        <option value="3">Product Manager</option>
-                        <option value="4">Other</option>
+                    <MySelect multiple={true} id='1' label="Категории" name="categories">
+                        <option value="">Выберете</option>
+                        {categories?.map(category =>
+                            <option key={category.id} value={category.id}>{category.name}</option>
+                        )}
+
                     </MySelect>
                     <MyFileInput
                         label="Название"
