@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
+import MyButton from '../../../../components/UI/MyButton/MyButton';
+import MyImage from '../../../../components/UI/MyImage/MyImage';
+import { BACKEND_URL } from '../../../../consts/store';
+import { IProduct } from '../../../../models/IProduct';
 import classes from './ProductCard.module.scss'
-import { IProduct } from '../../models/IProduct';
-import MyImage from '../UI/MyImage/MyImage';
-import MyButton from '../UI/MyButton/MyButton';
-import { BACKEND_URL } from '../../consts/store';
+
 
 interface ProductCardProps {
     product: IProduct

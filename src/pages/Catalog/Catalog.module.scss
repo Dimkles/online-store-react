@@ -4,6 +4,12 @@
 
 .content {
     display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 4.5fr;
+}
+
+.products {
+    display: grid;
     gap: 30px;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 1fr;

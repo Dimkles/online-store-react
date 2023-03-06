@@ -1,19 +1,18 @@
 import React, { FC } from 'react';
-import ProductCard from '../../components/ProductCard/ProductCard';
 import Container from '../../components/UI/Container/Container';
-import { useFechAllProductsQuery } from '../../services/RTK/ProductsService';
+import Sidebar from '../../components/UI/Sidebar/Sidebar';
 import classes from './Catalog.module.scss'
+import Categories from './Components/Categories/Categories';
+import Products from './Components/Products/Products';
 
 const Catalog: FC = () => {
-    const { data } = useFechAllProductsQuery({ limit: 10, page: 1 })
     return (
         <section className={classes.catalog}>
-            <Container>
-                <div className={classes.content}>
-                    {data?.products.map(product =>
-                        <ProductCard key={product.id} product={product} />
-                    )}
-                </div>
+            <Container className={classes.content}>
+                <Sidebar>
+                    <Categories />
+                </Sidebar>
+                <Products />
             </Container>
         </section>
     );
