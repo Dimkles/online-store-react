@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { IProduct } from '../../../../models/IProduct';
 import { useFechAllProductsQuery } from '../../../../services/RTK/ProductsService';
 import ProductCard from '../ProductCard/ProductCard';
 import classes from './Products.module.scss'
-const Products = () => {
-    const { data: products } = useFechAllProductsQuery({ limit: 10, page: 1 })
+
+interface ProductsProps {
+    products: IProduct[] | undefined
+}
+
+const Products: FC<ProductsProps> = ({ products }) => {
     return (
         <div className={classes.products}>
-            {products?.products.map(product =>
+            {products?.map(product =>
                 <ProductCard key={product.id} product={product} />
             )}
         </div>
