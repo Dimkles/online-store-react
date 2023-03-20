@@ -1,17 +1,16 @@
 import React, { Dispatch, FC, SetStateAction } from 'react';
 import MyButton from '../../../../components/UI/MyButton/MyButton';
 import { ICategory } from '../../../../models/ICategory';
-import { useFechAllCategoriesQuery } from '../../../../services/RTK/CategoriesService';
-import classes from './Categories.module.scss'
 
 interface CategoriesProps {
     categories: ICategory[] | undefined
-    currentCategory: ICategory
-    setCurrentCategory: Dispatch<SetStateAction<ICategory>>
+    currentCategory: number
+    setCurrentCategory: Dispatch<SetStateAction<number>>
 }
 
 const Categories: FC<CategoriesProps> = ({ categories, currentCategory, setCurrentCategory }) => {
     const clickHandler = (category: ICategory) => {
+        setCurrentCategory(category.id)
         console.log(category)
     }
     return (

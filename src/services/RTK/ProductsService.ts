@@ -4,6 +4,7 @@ import { baseQueryWithReauth } from "./service"
 interface FechAllProducts {
     limit: number
     page: number
+    categoryId?: number
 }
 export interface RessFechAllProducts {
     products: IProduct[]
@@ -15,12 +16,13 @@ export const productAPI = createApi({
     tagTypes: ['Product'],
     endpoints: (build) => ({
         fechAllProducts: build.query<RessFechAllProducts, FechAllProducts>({
-            query: ({ limit, page }) => ({
+            query: ({ limit, page, categoryId = 0 }) => ({
                 url: '/products',
                 method: 'GET',
                 params: {
                     limit,
-                    page
+                    page,
+                    categoryId
                 }
             }),
             providesTags: resul => ['Product'],
