@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import Container from '../../components/UI/Container/Container';
 import Sidebar from '../../components/UI/Sidebar/Sidebar';
-import { ICategory } from '../../models/ICategory';
 import { IProduct } from '../../models/IProduct';
 import { useFechAllCategoriesQuery } from '../../services/RTK/CategoriesService';
 import { useFechAllProductsQuery } from '../../services/RTK/ProductsService';
@@ -16,11 +15,11 @@ const Catalog: FC = () => {
     const { data, refetch: refetchProducts } = useFechAllProductsQuery({ limit: 10, page: 1, categoryId: currentCategory })
     useEffect(() => {
         setProducts(data?.products)
-    })
+    }, [data])
     useEffect(() => {
         refetchProducts()
         setProducts(data?.products)
-    }, [currentCategory])
+    }, [currentCategory, data, refetchProducts])
     return (
         <section className={classes.catalog}>
             <Container className={classes.content}>

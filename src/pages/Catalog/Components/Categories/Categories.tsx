@@ -1,6 +1,7 @@
 import React, { Dispatch, FC, SetStateAction } from 'react';
 import MyButton from '../../../../components/UI/MyButton/MyButton';
 import { ICategory } from '../../../../models/ICategory';
+import CategoryItem from '../CategoryItem/CategoryItem';
 
 interface CategoriesProps {
     categories: ICategory[] | undefined
@@ -9,17 +10,14 @@ interface CategoriesProps {
 }
 
 const Categories: FC<CategoriesProps> = ({ categories, currentCategory, setCurrentCategory }) => {
-    const clickHandler = (category: ICategory) => {
-        setCurrentCategory(category.id)
-        console.log(category)
+    const clickHandler = (categoryId: number) => {
+        setCurrentCategory(categoryId)
     }
     return (
         <ul>
             {categories?.map(category =>
                 <li key={category.id}>
-                    <MyButton variant='text' type='button' onClick={() => clickHandler(category)}>
-                        {category.name}
-                    </MyButton>
+                    <CategoryItem currentCategory={currentCategory} category={category} onClick={clickHandler} />
                 </li>
             )}
         </ul>

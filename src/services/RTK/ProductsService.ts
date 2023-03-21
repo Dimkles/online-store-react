@@ -16,7 +16,7 @@ export const productAPI = createApi({
     tagTypes: ['Product'],
     endpoints: (build) => ({
         fechAllProducts: build.query<RessFechAllProducts, FechAllProducts>({
-            query: ({ limit, page, categoryId = 0 }) => ({
+            query: ({ limit, page, categoryId }) => ({
                 url: '/products',
                 method: 'GET',
                 params: {
