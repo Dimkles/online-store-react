@@ -1,23 +1,14 @@
-import { useState } from 'react';
 import { useAppSelector } from '../../hooks/redux';
 import { useLogoutMutation } from '../../services/RTK/UserService';
-import LoginForm from '../LoginForm/LoginForm';
-import MyModal from '../UI/MyModal/MyModal';
-import Box from '../UI/Box/Box';
 import MyButton from '../UI/MyButton/MyButton';
 import classes from './AuthWidget.module.scss'
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import { Link } from 'react-router-dom';
 const AuthWidget = () => {
     const { isAuth, user } = useAppSelector(state => state.user)
-    const [isRegistration, setIsRegistration] = useState(false)
-    const [modalActive, setModalActive] = useState(false)
     const [logout] = useLogoutMutation()
     const logoutHandler = async () => {
         await logout('').unwrap()
         localStorage.removeItem('token')
-    }
-    const hideModal = () => {
-        setModalActive(false)
     }
     return (
         isAuth
@@ -28,19 +19,7 @@ const AuthWidget = () => {
             </div>
             :
             <div className={classes.content}>
-                <MyButton onClick={() => setModalActive(true)} type='button'>Войти</MyButton>
-                <MyModal active={modalActive} setActive={setModalActive}>
-                    <Box
-                        gap={15}
-                        fd='column'
-                    >
-                        {isRegistration
-                            ? <RegistrationForm submitHandler={hideModal} />
-                            : <LoginForm submitHandler={hideModal} />
-                        }
-                        <MyButton variant='text' type='button' onClick={() => setIsRegistration(prev => !prev)}>{isRegistration ? 'Вход' : 'Регистрация'}</MyButton>
-                    </Box>
-                </MyModal>
+                <Link to='/login'>Войти</Link>
             </div>
 
 

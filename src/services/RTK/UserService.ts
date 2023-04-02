@@ -42,7 +42,7 @@ export const checkAuthAPI = createApi({
     reducerPath: 'checkAuthAPI',
     baseQuery,
     endpoints: (build) => ({
-        checkAuth: build.mutation({
+        checkAuth: build.query({
             query: () => ({
                 url: '/auth/refresh',
                 method: 'GET',
@@ -53,6 +53,6 @@ export const checkAuthAPI = createApi({
     })
 })
 
-export const { useCheckAuthMutation } = checkAuthAPI
+export const { useCheckAuthQuery } = checkAuthAPI
 
 export const { useLoginMutation, useLogoutMutation, useRegistrationMutation } = userAPI

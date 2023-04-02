@@ -12,11 +12,7 @@ import { useFechAllCategoriesQuery } from '../../../../services/RTK/CategoriesSe
 const CreateProductForm = () => {
     const [createProduct] = useCreateProductMutation()
     const { data: categories } = useFechAllCategoriesQuery('')
-    const { data: products } = useFechAllProductsQuery({ limit: 10, page: 1 })
     const [error, setError] = useState('')
-    useEffect(() => {
-        console.log(products)
-    }, [products])
     return (
         <Formik
             initialValues={{

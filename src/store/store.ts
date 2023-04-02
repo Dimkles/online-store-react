@@ -20,6 +20,7 @@ export const setupStore = () => {
                 .concat(userAPI.middleware)
                 .concat(productAPI.middleware)
                 .concat(categoryAPI.middleware)
+                .concat(checkAuthAPI.middleware)
     })
 }
 
