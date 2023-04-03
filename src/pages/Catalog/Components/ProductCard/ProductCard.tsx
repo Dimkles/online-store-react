@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import MyButton from '../../../../components/UI/MyButton/MyButton';
 import MyImage from '../../../../components/UI/MyImage/MyImage';
 import { BACKEND_URL } from '../../../../consts/store';
@@ -12,7 +13,7 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
     return (
-        <div className={classes.card}>
+        <Link to={`/catalog/${product.id}`} className={classes.card}>
             <MyImage webp={`${BACKEND_URL}/${product.imagewebp}`} jpg={`${BACKEND_URL}/${product.imagejpg}`} height={300} />
             <div className={classes.info}>
                 <span className={classes.name}>
@@ -35,7 +36,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
             <MyButton type='button'>
                 Добавить в корзину
             </MyButton>
-        </div>
+        </Link>
     );
 };
 
