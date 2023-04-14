@@ -1,16 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { FC, useState } from 'react';
 import { useAppSelector } from '../../../hooks/redux';
 import classes from './Menu.module.scss'
 import MenuItem from './menuItem/MenuItem';
 const Menu: FC = () => {
-    const [menuACtive, setMenuActive] = useState(false)
+    const [menuActive, setMenuActive] = useState(false)
     const { isAuth, user } = useAppSelector(state => state.user)
-    const location = useLocation();
-    useEffect(() => {
-        setActiveLink(location.pathname)
-    }, [location])
-    const [activeLink, setActiveLink] = useState('/')
     const adminRoutes = [
         { name: 'Главная', to: '/' },
         { name: 'Каталог', to: '/catalog' },
@@ -29,26 +23,26 @@ const Menu: FC = () => {
         <nav className={classes.menu}>
             <div className={classes.burger}>
                 <button
-                    onClick={() => setMenuActive(!menuACtive)}
+                    onClick={() => setMenuActive(!menuActive)}
                 >
                     <span></span>
                 </button>
             </div>
             <div
-                className={menuACtive ? [classes.layer, classes.active].join(' ') : classes.layer}
+                className={menuActive ? [classes.layer, classes.active].join(' ') : classes.layer}
                 onClick={() => setMenuActive(false)}
             ></div>
-            <ul className={menuACtive ? [classes.menu__list, classes.active].join(' ') : classes.menu__list}>
+            <ul className={menuActive ? [classes.menu__list, classes.active].join(' ') : classes.menu__list}>
                 {isAuth
                     ? user.roles.some(e => e.value === 'ADMIN')
                         ? adminRoutes.map((route) =>
-                            <MenuItem activeLink={activeLink} route={route} key={route.name} />
+                            <MenuItem route={route} key={route.name} />
                         )
                         : authRoutes.map((route) =>
-                            <MenuItem activeLink={activeLink} route={route} key={route.name} />
+                            <MenuItem route={route} key={route.name} />
                         )
                     : publicRoutes.map((route) =>
-                        <MenuItem activeLink={activeLink} route={route} key={route.name} />
+                        <MenuItem route={route} key={route.name} />
                     )
                 }
             </ul>

@@ -10,6 +10,11 @@ export interface RessFechAllProducts {
     products: IProduct[]
     totalItems: number
 }
+
+interface fetchProductById {
+    id: string | undefined
+}
+
 export const productAPI = createApi({
     reducerPath: 'productAPI',
     baseQuery: baseQueryWithReauth,
@@ -34,9 +39,15 @@ export const productAPI = createApi({
                 body
             }),
             invalidatesTags: ['Product']
+        }),
+        fetchProductById: build.query<IProduct, fetchProductById>({
+            query: ({ id }) => ({
+                url: `/products/${id}`,
+                method: 'GET',
+            })
         })
     }),
 })
 
-export const { useFechAllProductsQuery, useCreateProductMutation } = productAPI
+export const { useFechAllProductsQuery, useCreateProductMutation, useFetchProductByIdQuery } = productAPI
 
